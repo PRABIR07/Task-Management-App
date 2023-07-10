@@ -1,11 +1,10 @@
 import { Grid } from '@mui/material';
-import {FC, ReactElement} from 'react';
 
-export const TaskArea: FC = (): ReactElement =>{
+
+export const TaskArea = ()=> {
     return (
         <Grid item md={8} px={4}>
             <h2>Content Area</h2>
         </Grid>
     );
-}
-        
+};

@@ -1,12 +1,12 @@
-import { FC, ReactElement } from 'react';
+
 import { Avatar, Box, Typography } from '@mui/material';
 
 interface IProfile {
-    name?: string;
+    name?: string | undefined ;
 }
 
-export const Profile: FC<IProfile> = (props): ReactElement => {
-    const { name = 'Prabir' } = props;
+export const Profile = ({name = 'Prabir'}:IProfile)=> {
+    
     return (
         <Box
             display="flex"
