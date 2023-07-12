@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
-import { Box, Stack, TextField, Typography } from '@mui/material';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { Box, Stack, Typography } from '@mui/material';
+import { TaskTitleField } from './_taskTitleField';
+import { TaskDescriptionField } from './_taskDescriptionField';
+import { TaskDateField } from './_taskDateField';
+import { TaskSelectField } from './_taskSelectField';
 
-export interface ITextField {
-    disabled?: boolean;
-    onChange?: (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => void;
-}
-
-export const CreateTaskForm = ({}) => {
-    const [date, setDate] = useState<Date | null>(null);
+export const CreateTaskForm = () => {
     return (
         <Box
             display="flex"
@@ -26,45 +18,14 @@ export const CreateTaskForm = ({}) => {
                 Create Task
             </Typography>
             <Stack sx={{ width: '100%' }} spacing={2}>
-                <TextField
-                    id="title"
-                    label="Task Tiltle"
-                    placeholder="Task Title"
-                    variant="outlined"
-                    size="small"
-                    name="title"
-                    fullWidth
-                    onChange={(e) => {
-                        console.log(e.target.value);
-                    }}
-                    disabled={false}
-                />
-                <TextField
-                    id="description"
-                    label="Task Description"
-                    placeholder="Task Description"
-                    variant="outlined"
-                    size="small"
-                    name="description"
-                    fullWidth
-                    multiline
-                    rows={4}
-                    onChange={(e) => {
-                        console.log(e.target.value);
-                    }}
-                    disabled={false}
-                />
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DesktopDatePicker
-                        label="Date"
-                        inputFormat="dd/MM/yyyy"
-                        value={date}
-                        onChange={(newValue) => {
-                            setDate(newValue);
-                        }}
-                        renderInput={(params) => <TextField {...params} />}
-                    />
-                </LocalizationProvider>
+                <TaskTitleField />
+                <TaskDescriptionField />
+                <TaskDateField />
+                <Stack sx={{ width: '100%' }} spacing={2} direction="row">
+                    <TaskSelectField/>
+                    <TaskSelectField/>
+
+                </Stack>
             </Stack>
         </Box>
     );
